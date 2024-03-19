@@ -395,7 +395,7 @@ static int jz_gpio_request(struct gpio_chip *chip, unsigned offset)
 		printk("gpio:jz->reg = 0x%x\n", (unsigned int)jz->reg);
 		printk("gpio pin: 0x%x\n", 1 << offset);
 		printk("jz->dev_map[0]: 0x%x\n", (unsigned int)jz->dev_map[0]);
-		dump_stack();
+		/* dump_stack(); */
 		printk("%s:gpio functions has redefinition", __FILE__);
 	}
 	jz->dev_map[0] |= 1 << offset;
