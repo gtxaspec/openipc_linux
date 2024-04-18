@@ -71,7 +71,6 @@ static inline void jz_tcu_set_prescale(struct jz_tcu_chn *tcu_chn, enum tcu_pres
 	tcu_chn_writel(tcu_chn, CHN_TCSR, tcsr | (prescale << 3));
 }
 
-
 static inline void jz_tcu_set_pwm_output_init_level(struct jz_tcu_chn *tcu_chn, int level)
 {
 	if (level) {
@@ -119,21 +118,20 @@ void jz_tcu_config_chn(struct jz_tcu_chn *tcu_chn)
 		break;
 	}
 
-
 	/* init level */
-	if(tcu_chn->init_level)
+	if (tcu_chn->init_level)
 		jz_tcu_set_pwm_output_init_level(tcu_chn, 1);
 	else
 		jz_tcu_set_pwm_output_init_level(tcu_chn, 0);
 	/* TCU mode */
-	if(tcu_chn->index == 1 || tcu_chn->index == 2) {
+	if (tcu_chn->index == 1 || tcu_chn->index == 2) {
 		tcu_chn->tcu_mode = TCU_MODE_2;
 	} else {
 		tcu_chn->tcu_mode = TCU_MODE_1;
 		/* shutdown mode */
-		if(tcu_chn->shutdown_mode) {
+		if (tcu_chn->shutdown_mode) {
 			tcu_chn_writel(tcu_chn, CHN_TCSR, tcu_chn_readl(tcu_chn, CHN_TCSR) | (TCSR_PWM_SD));
-		}else {
+		} else {
 			tcu_chn_writel(tcu_chn, CHN_TCSR, tcu_chn_readl(tcu_chn, CHN_TCSR) & ~(TCSR_PWM_SD));
 		}
 	}
@@ -151,20 +149,17 @@ void jz_tcu_config_chn(struct jz_tcu_chn *tcu_chn)
 		tcu_chn_writel(tcu_chn, CHN_TCSR, tcu_chn_readl(tcu_chn, CHN_TCSR) & ~(TCSR_PWM_EN));
 	}
 	/* pwm_bapass_mode */
-	if(tcu_chn->pwm_bapass_mode) {
+	if (tcu_chn->pwm_bapass_mode) {
 		tcu_chn_writel(tcu_chn, CHN_TCSR, tcu_chn_readl(tcu_chn, CHN_TCSR) | (TCSR_PWM_BYPASS));
 	} else {
 		tcu_chn_writel(tcu_chn, CHN_TCSR, tcu_chn_readl(tcu_chn, CHN_TCSR) & ~(TCSR_PWM_BYPASS));
 	}
 	/* pwm_in */
-	if(tcu_chn->pwm_in) {
+	if (tcu_chn->pwm_in) {
 		tcu_chn_writel(tcu_chn, CHN_TCSR, tcu_chn_readl(tcu_chn, CHN_TCSR) | (TCSR_PWM_IN));
 	} else {
 		tcu_chn_writel(tcu_chn, CHN_TCSR, tcu_chn_readl(tcu_chn, CHN_TCSR) & ~(TCSR_PWM_IN));
 	}
-
-
-
 }
 EXPORT_SYMBOL_GPL(jz_tcu_config_chn);
 
@@ -258,7 +253,7 @@ static struct irq_chip jz_tcu_irq_chip = {
 	.irq_ack = jz_tcu_irq_ack,
 };
 
-#define TCU_CELL_RES(NO)						\
+#define TCU_CELL_RES(NO)					\
 	static struct resource tcucell##NO##_resources[] = {	\
 		{						\
 			.start = NO,				\
@@ -276,7 +271,7 @@ TCU_CELL_RES(7);
 #undef TCU_CELL_RES
 
 static struct mfd_cell jz_tcu_cells[] = {
-#define DEF_TCU_CELL_NAME(NO,NAME)					\
+#define DEF_TCU_CELL_NAME(NO, NAME)					\
 	{								\
 		.id = NO,						\
 		.name = NAME,						\
@@ -400,11 +395,11 @@ static int jztcu_remove(struct platform_device *pdev)
 }
 
 struct platform_driver jztcu_driver = {
-	.probe	= jztcu_probe,
-	.remove	= jztcu_remove,
+	.probe = jztcu_probe,
+	.remove = jztcu_remove,
 	.driver = {
-		.name	= "jz-tcu",
-		.owner	= THIS_MODULE,
+		.name = "jz-tcu",
+		.owner = THIS_MODULE,
 	},
 };
 

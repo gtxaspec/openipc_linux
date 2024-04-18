@@ -124,14 +124,14 @@ obj-$(CONFIG_AB8500_GPADC)	+= ab8500-gpadc.o
 obj-$(CONFIG_MFD_DB8500_PRCMU)	+= db8500-prcmu.o
 # ab8500-core need to come after db8500-prcmu (which provides the channel)
 obj-$(CONFIG_AB8500_CORE)	+= ab8500-core.o ab8500-sysctrl.o
-obj-$(CONFIG_MFD_TIMBERDALE)    += timberdale.o
+obj-$(CONFIG_MFD_TIMBERDALE)	+= timberdale.o
 obj-$(CONFIG_PMIC_ADP5520)	+= adp5520.o
 obj-$(CONFIG_LPC_SCH)		+= lpc_sch.o
 obj-$(CONFIG_LPC_ICH)		+= lpc_ich.o
 obj-$(CONFIG_MFD_RDC321X)	+= rdc321x-southbridge.o
 obj-$(CONFIG_MFD_JANZ_CMODIO)	+= janz-cmodio.o
 obj-$(CONFIG_MFD_JZ4740_ADC)	+= jz4740-adc.o
-obj-$(CONFIG_MFD_JZ_SADC_V11)   += jz_adc_v12.o
+obj-$(CONFIG_MFD_JZ_SADC_V11)	+= jz_adc_v12.o
 obj-$(CONFIG_MFD_JZ_SADC_V12)	+= jz_adc_v12.o
 obj-$(CONFIG_MFD_JZ_SADC_V13)	+= jz_adc_v13.o
 obj-$(CONFIG_MFD_JZ_SADC_AUX)	+= jz_adc_aux.o
@@ -144,8 +144,8 @@ obj-$(CONFIG_MFD_SI476X_CORE)	+= si476x-core.o
 
 obj-$(CONFIG_MFD_CS5535)	+= cs5535-mfd.o
 obj-$(CONFIG_MFD_OMAP_USB_HOST)	+= omap-usb-host.o omap-usb-tll.o
-obj-$(CONFIG_MFD_PM8921_CORE) 	+= pm8921-core.o
-obj-$(CONFIG_MFD_PM8XXX_IRQ) 	+= pm8xxx-irq.o
+obj-$(CONFIG_MFD_PM8921_CORE)	+= pm8921-core.o
+obj-$(CONFIG_MFD_PM8XXX_IRQ)	+= pm8xxx-irq.o
 obj-$(CONFIG_TPS65911_COMPARATOR)	+= tps65911-comparator.o
 obj-$(CONFIG_MFD_TPS65090)	+= tps65090.o
 obj-$(CONFIG_MFD_AAT2870_CORE)	+= aat2870-core.o
@@ -160,7 +160,7 @@ obj-$(CONFIG_VEXPRESS_CONFIG)	+= vexpress-config.o vexpress-sysreg.o
 obj-$(CONFIG_MFD_RETU)		+= retu-mfd.o
 obj-$(CONFIG_MFD_AS3711)	+= as3711.o
 
-obj-$(CONFIG_MFD_DA9024)    	+= d2041-core.o d2041-irq.o d2041-i2c.o
+obj-$(CONFIG_MFD_DA9024)	+= d2041-core.o d2041-irq.o d2041-i2c.o
 obj-$(CONFIG_MFD_RICOH619)	+= ricoh619.o ricoh619-irq.o
 
-obj-$(CONFIG_MFD_JZ_TCU)		+= jz_tcu.o
+obj-$(CONFIG_MFD_JZ_TCU)	+= jz_tcu.o

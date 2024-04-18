@@ -3,8 +3,8 @@
 #
 
 config  SOC_MCLK
-        bool 'MCLK from CPU'
-        depends on VIDEO_TX_ISP
+	bool 'MCLK from CPU'
+	depends on VIDEO_TX_ISP
 	default y
-        ---help---
-          MCLK from CPU.
+	  ---help---
+	  MCLK from CPU.

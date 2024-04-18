@@ -77,9 +77,9 @@ obj-$(CONFIG_I2C_XLR)		+= i2c-xlr.o
 obj-$(CONFIG_I2C_RCAR)		+= i2c-rcar.o
 
 obj-$(CONFIG_I2C0_V12_JZ) 	+= i2c-v12-jz.o
-obj-$(CONFIG_I2C1_V12_JZ)       += i2c-v12-jz.o
-obj-$(CONFIG_I2C2_V12_JZ)       += i2c-v12-jz.o
-obj-$(CONFIG_I2C3_V12_JZ)       += i2c-v12-jz.o
+obj-$(CONFIG_I2C1_V12_JZ)   += i2c-v12-jz.o
+obj-$(CONFIG_I2C2_V12_JZ)   += i2c-v12-jz.o
+obj-$(CONFIG_I2C3_V12_JZ)   += i2c-v12-jz.o
 
 
 

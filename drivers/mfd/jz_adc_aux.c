@@ -141,14 +141,14 @@ restart:
 	tmp = wait_for_completion_interruptible_timeout(&jz_adc_aux->read_completion, HZ);
 	if (tmp > 0) {
 		sadc_volt = readl(jz_adc_aux->base) & 0xfff;
-	} else if(tmp == -ERESTARTSYS){
+	} else if (tmp == -ERESTARTSYS) {
 		goto restart;
 	} else {
-        goto restart;
+		goto restart;
 	}
 
 	if (sadc_volt < 0) {
-        goto restart;
+		goto restart;
 	}
 
 	disable_irq(jz_adc_aux->irq);
