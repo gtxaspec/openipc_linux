@@ -4302,7 +4302,7 @@ nomem:
 }
 
 /*
- * Caculate mmu pages needed for kvm.
+ * Calculate mmu pages needed for kvm.
  */
 unsigned int kvm_mmu_calculate_mmu_pages(struct kvm *kvm)
 {

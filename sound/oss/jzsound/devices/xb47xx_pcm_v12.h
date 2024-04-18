@@ -265,7 +265,7 @@ typedef unsigned long snd_pcm_solt_num_t;
 struct pcm_conf_info {
 	unsigned long pcm_sync_clk;		//rate
 	unsigned long pcm_clk;			//bit clk
-	unsigned long pcm_sysclk;		//sys clk if you choose master mode it can caculate by software
+	unsigned long pcm_sysclk;		//sys clk if you choose master mode it can calculate by software
 	unsigned long iss;
 	unsigned long oss;
 	snd_pcm_mode_t pcm_device_mode;

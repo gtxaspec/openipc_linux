@@ -389,7 +389,7 @@ int f2fs_setxattr(struct inode *inode, int name_index, const char *name,
 	/* 1. Check space */
 	if (value) {
 		/* If value is NULL, it is remove operation.
-		 * In case of update operation, we caculate free.
+		 * In case of update operation, we calculate free.
 		 */
 		free = MIN_OFFSET - ((char *)last - (char *)header);
 		if (found)
