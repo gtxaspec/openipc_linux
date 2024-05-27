@@ -101,7 +101,7 @@ MODULE_PARM_DESC(copybreak,
 static int jz_mdiobus_read(struct mii_bus *bus, int phy_addr, int regnum);
 static int jz_mdio_phy_read(struct net_device *dev, int phy_id, int location);
 static int jz_mdiobus_write(struct mii_bus *bus, int phy_addr, int regnum, u16 value);
-static int jz_mdio_phy_write(struct net_device *dev, int phy_id, int location, int value);
+void jz_mdio_phy_write(struct net_device *dev, int phy_id, int location, int value);
 
 void set_mac_phy_clk(mac_clock_control mac_control)
 {
@@ -2127,10 +2127,10 @@ static int jz_mdiobus_write(struct mii_bus *bus, int phy_addr, int regnum,
 	return synopGMAC_write_phy_reg(gmacdev, phy_addr, regnum, value);
 }
 
-static int jz_mdio_phy_write(struct net_device *dev, int phy_id, int location, int value)
+void jz_mdio_phy_write(struct net_device *dev, int phy_id, int location, int value)
 {
 	struct jz_mac_local *lp = netdev_priv(dev);
-	return jz_mdiobus_write(lp->mii_bus, phy_id, location, value);
+	jz_mdiobus_write(lp->mii_bus, phy_id, location, value);
 }
 
 static int jz_mdiobus_reset(struct mii_bus *bus)
