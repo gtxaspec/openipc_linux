@@ -1657,7 +1657,7 @@ static void handle_setup_packet(struct mv_udc *udc, u8 ep_num,
 	dev_dbg(&udc->dev->dev, "SETUP %02x.%02x v%04x i%04x l%04x\n",
 			setup->bRequestType, setup->bRequest,
 			setup->wValue, setup->wIndex, setup->wLength);
-	/* We process some stardard setup requests here */
+	/* We process some standard setup requests here */
 	if ((setup->bRequestType & USB_TYPE_MASK) == USB_TYPE_STANDARD) {
 		switch (setup->bRequest) {
 		case USB_REQ_GET_STATUS:

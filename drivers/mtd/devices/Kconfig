@@ -119,7 +119,7 @@ choice
 	help
 	  Select sfc Mode
 
-config SPI_STARDARD
+config SPI_STANDARD
 	bool "standard spi mode"
 	depends on (MTD_JZ_SFC || MTD_JZ_SFC_NORFLASH)
 	help

@@ -4644,7 +4644,7 @@ static void XGI_DisableBridge(struct xgifb_video_info *xgifb_info,
 						tempah = 0xBF;
 
 					if (pVBInfo->SetFlag & DisableChB)
-						/* force to disable Cahnnel */
+						/* force to disable Channel */
 						tempah &= 0xBF;
 
 					if (pVBInfo->SetFlag & DisableChA)

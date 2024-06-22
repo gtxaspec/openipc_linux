@@ -51,7 +51,7 @@
 
 #define PCMOD_CBSZ	(1UL<<(31-23)) /* set for 8bit */
 
-#define PCMOD_DBEX	(1UL<<(31-31)) /* set for excahnge */
+#define PCMOD_DBEX	(1UL<<(31-31)) /* set for exchange */
 
 /*
  * M32R PCC Map addr
