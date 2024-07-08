@@ -69,7 +69,7 @@ struct jz_gpio_func_def platform_devio_array[] = {
 #endif
 
 
-#ifdef CONFIG_SERIAL_T23_UART0
+#ifdef CONFIG_SERIAL_JZ47XX_UART0
 #if defined(CONFIG_UART0_PB)
 	UART0_PORTB,
 #elif defined(CONFIG_UART0_PB_FC)
@@ -77,7 +77,7 @@ struct jz_gpio_func_def platform_devio_array[] = {
 #endif
 #endif
 
-#ifdef CONFIG_SERIAL_T23_UART1
+#ifdef CONFIG_SERIAL_JZ47XX_UART1
 #if defined(CONFIG_UART1_PA)
 	UART1_PORTA,
 #elif defined(CONFIG_UART1_PB)
@@ -85,7 +85,7 @@ struct jz_gpio_func_def platform_devio_array[] = {
 #endif
 #endif
 
-#ifdef CONFIG_SERIAL_T23_UART2
+#ifdef CONFIG_SERIAL_JZ47XX_UART2
 #if defined(CONFIG_UART2_PB)
 	UART2_PORTB,
 #elif defined(CONFIG_UART2_PB_FC)
@@ -223,11 +223,11 @@ static struct jzdma_platform_data jzdma_pdata = {
 		JZDMA_REQ_SSLV,
 		JZDMA_REQ_SSLV,
 		JZDMA_REQ_DMIC,
-#ifdef CONFIG_SERIAL_T23_UART1_DMA
+#ifdef CONFIG_SERIAL_JZ47XX_UART1_DMA
 		JZDMA_REQ_UART1,
 		JZDMA_REQ_UART1,
 #endif
-#ifdef CONFIG_SERIAL_T23_UART0_DMA
+#ifdef CONFIG_SERIAL_JZ47XX_UART0_DMA
 		JZDMA_REQ_UART0,
 		JZDMA_REQ_UART0,
 #endif
@@ -558,7 +558,7 @@ static struct resource jz_uart0_resources[] = {
 		.end = IRQ_UART0,
 		.flags = IORESOURCE_IRQ,
 	},
-#ifdef CONFIG_SERIAL_T23_UART0_DMA
+#ifdef CONFIG_SERIAL_JZ47XX_UART0_DMA
 	[2] = {
 		.start = JZDMA_REQ_UART0,
 		.flags = IORESOURCE_DMA,
@@ -584,7 +584,7 @@ static struct resource jz_uart1_resources[] = {
 		.end = IRQ_UART1,
 		.flags = IORESOURCE_IRQ,
 	},
-#ifdef CONFIG_SERIAL_T23_UART1_DMA
+#ifdef CONFIG_SERIAL_JZ47XX_UART1_DMA
 	[2] = {
 		.start = JZDMA_REQ_UART1,
 		.flags = IORESOURCE_DMA,
@@ -610,7 +610,7 @@ static struct resource jz_uart2_resources[] = {
 		.end = IRQ_UART2,
 		.flags = IORESOURCE_IRQ,
 	},
-#ifdef CONFIG_SERIAL_T23_UART2_DMA
+#ifdef CONFIG_SERIAL_JZ47XX_UART2_DMA
 	[2] = {
 		.start = JZDMA_REQ_UART2,
 		.flags = IORESOURCE_DMA,

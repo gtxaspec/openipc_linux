@@ -74,7 +74,7 @@ config MTD_JZ_SPI_NORFLASH
 		Now support GD25LQ64C
 
 config MTD_JZ_SFC_NORFLASH
-	bool "Support ingenic spi-mtd"
+	bool "Support ingenic sfc-mtd"
 	help
 		nothing
 
