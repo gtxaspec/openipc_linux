@@ -135,9 +135,13 @@ void jz_wdt_restart(char *command)
 			udelay(100);
 		}
 	} else {
+		/* This code is invoked upon each restart. It initializes the CPSPPR register,
+		overwriting any pre-existing data. Currently, this behavior is not desired, so it's disabled. */
+#if 0
 		cpm_outl(0x5a5a,CPM_CPSPPR);
 		cpm_outl(REBOOT_SIGNATURE,CPM_CPPSR);
 		cpm_outl(0x0,CPM_CPSPPR);
+#endif
 	}
 
 	wdt_start_count(4);

@@ -19,7 +19,11 @@
 #endif
 #endif
 
+#ifdef CONFIG_SOC_T23
+#define VPU_BASE             0x13100000
+#else
 #define VPU_BASE             0x13200000
+#endif
 
 #define	HID_SCH	             0x0
 #define	HID_VDMA	     0x1
@@ -770,6 +774,9 @@
 #define REG_JPGC_P2C         0xE0038
 #define REG_JPGC_P3C         0xE003C
 #define REG_JPGC_MCUS        0xE0064
+#ifdef CONFIG_SOC_T23
+#define REG_JPGC_MAX_BS      0xE0068
+#endif
 #define REG_JPGC_ZIGM0       0xE1000
 #define REG_JPGC_ZIGM1       0xE1100
 #define REG_JPGC_HUFB        0xE1200

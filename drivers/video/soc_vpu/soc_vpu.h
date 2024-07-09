@@ -5,7 +5,14 @@
 #include <linux/completion.h>
 #include <linux/spinlock.h>
 #include <linux/miscdevice.h>
+
+#ifdef CONFIG_SOC_T23
+#define SOC_VPU_VERSION     "1.0.0-03203fd46d"
+#define FRAME_TYPE_IVDC     (3)
+#define IVDC_BASE_ADDR      (0x13200000)
+#else
 #define SOC_VPU_VERSION		"1.0.0-03203fd46d"
+#endif
 
 #include "channel_vpu.h"
 

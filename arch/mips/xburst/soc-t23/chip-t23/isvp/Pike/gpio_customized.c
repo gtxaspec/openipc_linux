@@ -14,7 +14,8 @@ typedef struct gpio_drive_strength_table {
 } gpio_drive_strength_table_t;
 
 static gpio_pull_table_t soc_gpio_pull_table[] = {
-	{ GPIO_PB(27), GPIO_PULL_UP }, //TF cd
+// Dont force the pull state of the GPIO since we may not be using it for the TF cd pin
+//	{ GPIO_PB(27), GPIO_PULL_UP }, //TF cd
 };
 
 static gpio_drive_strength_table_t soc_gpio_drive_strength_table[] = {

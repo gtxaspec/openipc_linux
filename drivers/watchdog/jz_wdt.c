@@ -381,7 +381,11 @@ static int jz_wdt_probe(struct platform_device *pdev)
 		goto err_out;
 	}
 
+#ifdef CONFIG_SOC_T23
+	drvdata->rtc_clk = clk_get(NULL, "pclk");
+#else
 	drvdata->rtc_clk = clk_get(NULL, "rtc");
+#endif
 	if (IS_ERR(drvdata->rtc_clk)) {
 		dev_err(&pdev->dev, "cannot find RTC clock\n");
 		ret = PTR_ERR(drvdata->rtc_clk);
