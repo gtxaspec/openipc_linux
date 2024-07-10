@@ -1488,7 +1488,7 @@ config SERIAL_JZ47XX_UART
 	tristate "ingenic jz47xx serial port support"
 	select SERIAL_CORE
 	help
-	  If you have a machine based on a xbrust mips soc you can
+	  If you have a machine based on a xburst mips soc you can
 	  enable its onboard serial port by enabling this option.
 
 config SERIAL_JZ47XX_CONSOLE

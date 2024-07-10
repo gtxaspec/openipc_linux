@@ -67,7 +67,7 @@ static long vpu_open(struct device *dev)
 	if (cpm_inl(CPM_OPCR) & OPCR_IDLE)
 		return -EBUSY;
 
-    clk_enable(vpu->clk);
+	clk_enable(vpu->clk);
 	clk_enable(vpu->ahb1_gate);
 	clk_enable(vpu->clk_gate);
 	//cpm_pwc_enable(vpu->cpm_pwc);
@@ -174,6 +174,15 @@ static long vpu_start(struct device *dev, const struct channel_node * const cnod
 
     vpu_writel(vpu, REG_SCH_GLBC, SCH_GLBC_HIAXI | SCH_INTE_RESERR | SCH_INTE_ACFGERR
             | SCH_INTE_BSERR | SCH_INTE_ENDF);
+
+#ifdef CONFIG_SOC_T23
+	if (cnode->frame_type == FRAME_TYPE_IVDC) {
+		void *ivdc_iomap = ioremap(IVDC_BASE_ADDR, 0x1000);
+		writel(1, ivdc_iomap+0x78);
+		writel(1, ivdc_iomap+0x70);
+		iounmap(ivdc_iomap);
+	}
+#endif
 
 #ifdef CONFIG_SOC_T21
 	vpu_writel(vpu, REG_VDMA_TASKRG_T21, VDMA_ACFG_DHA(cnode->dma_addr)
@@ -344,14 +353,20 @@ static int vpu_probe(struct platform_device *pdev)
 		goto err_get_vpu_iomem;
 	}
 
+#ifndef CONFIG_SOC_T23
 	vpu->ahb1_gate = clk_get(&pdev->dev, "ahb1");
 	if (IS_ERR(vpu->ahb1_gate)) {
 		dev_err(&pdev->dev, "ahb1_gate get failed\n");
 		ret = PTR_ERR(vpu->ahb1_gate);
 		goto err_get_ahb1_clk_gate;
 	}
+#endif
 
+#ifdef CONFIG_SOC_T23
+	vpu->clk_gate = clk_get(&pdev->dev, "avpu");
+#else
 	vpu->clk_gate = clk_get(&pdev->dev, vpu->name);
+#endif
 	if (IS_ERR(vpu->clk_gate)) {
 		dev_err(&pdev->dev, "clk_gate get failed\n");
 		ret = PTR_ERR(vpu->clk_gate);
@@ -364,8 +379,14 @@ static int vpu_probe(struct platform_device *pdev)
         ret = PTR_ERR(vpu->clk);
         goto err_get_vpu_clk_cgu;
     }
+#ifdef CONFIG_SOC_T23
+    clk_set_rate(vpu->clk,450000000);
+	clk_enable(vpu->clk);
+	//clk_enable(vpu->ahb1_gate);
+	clk_enable(vpu->clk_gate);
+#else
     clk_set_rate(vpu->clk,350000000);
-
+#endif
 	spin_lock_init(&vpu->slock);
 	mutex_init(&vpu->mutex);
 	init_completion(&vpu->done);
@@ -403,7 +424,7 @@ err_vpu_request_power:
 #endif
 	free_irq(vpu->irq, vpu);
 err_vpu_request_irq:
-    clk_put(vpu->clk);
+	clk_put(vpu->clk);
 err_get_vpu_clk_cgu:
 	clk_put(vpu->clk_gate);
 err_get_vpu_clk_gate:

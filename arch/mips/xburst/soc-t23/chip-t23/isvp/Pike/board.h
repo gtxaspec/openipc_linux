@@ -32,7 +32,7 @@
 /* ****************************GPIO MMC START******************************** */
 #define GPIO_MMC_RST_N			-1
 #define GPIO_MMC_RST_N_LEVEL	LOW_ENABLE
-#define GPIO_MMC_CD_N			GPIO_PB(27)
+#define GPIO_MMC_CD_N			-1
 #define GPIO_MMC_CD_N_LEVEL		LOW_ENABLE
 #define GPIO_MMC_PWR			-1
 #define GPIO_MMC_PWR_LEVEL		HIGH_ENABLE

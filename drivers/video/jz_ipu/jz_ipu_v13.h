@@ -167,7 +167,11 @@ struct jz_ipu {
 	char name[16];
 
 	struct clk *clk;
-	struct clk *ahb1_gate; /* T31 IPU mount at AHB1*/
+#ifdef CONFIG_SOC_T23
+	struct clk *ahb0_gate; /* T23 IPU mount at AHB0 */
+#else
+	struct clk *ahb1_gate; /* T31 IPU mount at AHB1 */
+#endif
 	void __iomem *iomem;
 	struct device *dev;
 	struct resource *res;

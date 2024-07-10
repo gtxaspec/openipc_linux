@@ -352,6 +352,7 @@ int jz_gpio_set_func(int gpio, enum gpio_function func)
 	gpio_set_func(jz, func, pin);
 	return 0;
 }
+EXPORT_SYMBOL(jz_gpio_set_func);
 
 void jz_gpio_set_drive_strength(int gpio, gpio_drv_level_t lvl)
 {
