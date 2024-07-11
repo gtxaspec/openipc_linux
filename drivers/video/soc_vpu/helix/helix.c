@@ -106,9 +106,11 @@ static long vpu_release(struct device *dev)
 
 	cpm_clear_bit(CPM_HELIX_SR(vpu->vpu.idx),CPM_SRBC);
 
+#ifndef CONFIG_SOC_T23
     clk_disable(vpu->clk);
 	clk_disable(vpu->clk_gate);
 	clk_disable(vpu->ahb1_gate);
+#endif
 	//cpm_pwc_disable(vpu->cpm_pwc);
 	/* Clear completion use_count here to avoid a unhandled irq after vpu off */
 	vpu->done.done = 0;
@@ -184,7 +186,7 @@ static long vpu_start(struct device *dev, const struct channel_node * const cnod
 	}
 #endif
 
-#ifdef CONFIG_SOC_T21
+#if defined(CONFIG_SOC_T21) || defined(CONFIG_SOC_T23)
 	vpu_writel(vpu, REG_VDMA_TASKRG_T21, VDMA_ACFG_DHA(cnode->dma_addr)
 			| VDMA_ACFG_RUN);
 #else
