@@ -35,6 +35,15 @@ config JZMMC_V12_MMC0_PB_4BIT
 	bool "GPIO B, data with 4 bit"
 endchoice
 
+config JZMMC_V12_MMC0_1BIT
+    bool "Restrict host controller to 1 bit bus width"
+    default n
+    help
+      Some devices (Galayou G2 T23N) apparently do not support 4-bit data transfers.
+      Enabling this option will restrict the host to using just 1-bit data
+      transfers.
+      If unsure, say N.
+
 config MMC0_MAX_FREQ
 	int "msc0 max frequency"
 	depends on JZMMC_V12_MMC0

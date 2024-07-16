@@ -23,7 +23,11 @@ struct jzmmc_platform_data tf_pdata = {
 	.removal  			= REMOVABLE,
 	.sdio_clk			= 1,
 	.ocr_avail			= MMC_VDD_32_33 | MMC_VDD_33_34,
+#ifdef CONFIG_JZMMC_V12_MMC0_1BIT
+	.capacity  			= MMC_CAP_SD_HIGHSPEED | MMC_CAP_MMC_HIGHSPEED,
+#else
 	.capacity  			= MMC_CAP_SD_HIGHSPEED | MMC_CAP_MMC_HIGHSPEED | MMC_CAP_4_BIT_DATA,
+#endif
 	.pm_flags			= 0,
 	.recovery_info			= NULL,
 	.gpio				= &tf_gpio,
