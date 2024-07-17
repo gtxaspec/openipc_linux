@@ -803,7 +803,7 @@ choice
 	depends on I2C0_V12_JZ
 	default I2C0_PA12_PA13
 config I2C0_PA12_PA13
-	depends on SOC_T10 || SOC_T20 || SOC_T30 || SOC_T21 || SOC_T31
+	depends on SOC_T10 || SOC_T20 || SOC_T30 || SOC_T21 || SOC_T23 || SOC_T31
 	bool "GPIO_PA12 & GPIO_PA13"
 endchoice
 
@@ -832,7 +832,7 @@ choice
 	depends on I2C1_V12_JZ
 	default I2C1_PB25_PB26
 config I2C1_PB25_PB26
-	depends on SOC_T10 || SOC_T20 || SOC_T30 || SOC_T21 || SOC_T31
+	depends on SOC_T10 || SOC_T20 || SOC_T30 || SOC_T21 || SOC_T23 || SOC_T31
 	bool "GPIO_PB25 & GPIO_PB26"
 config I2C1_PC08_PC09
 	depends on SOC_T31
