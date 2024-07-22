@@ -2269,6 +2269,8 @@ static int  jz_mii_bus_probe(struct platform_device *pdev)
 	struct mii_bus *miibus;
 	int rc = 0, i;
 
+        printk("Ingenic on chip Ethernet MAC driver V13\n");
+
 	clk_gate = clk_get(NULL, "gmac");
 	clk_cgu = clk_get(NULL, "cgu_macphy");
 

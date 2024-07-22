@@ -2147,6 +2147,7 @@ static int  jz_mii_bus_probe(struct platform_device *pdev)
 #endif
 	struct clk *gmac_clk = clk_get(NULL, "gmac");
 
+	printk("Ingenic on chip Ethernet MAC driver\n");
 //	if (clk_enable(gmac_clk) < 0) {
 //		printk("enable gmac clk failed\n");
 	//	clk_put(gmac_clk);
