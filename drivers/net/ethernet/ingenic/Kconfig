@@ -22,6 +22,24 @@ config JZ_MAC_V13
 	  Select for X1000
 endchoice
 
+config JZ_INTERNAL_MAC_PHY
+	depends on SOC_T21 && JZ_MAC
+	bool "internal phy"
+	help
+		Select for t21
+
+config JZ_INTERNAL_MAC_PHY_LED_SOFTWARE_CTRL
+	depends on JZ_INTERNAL_MAC_PHY
+	bool "internal phy led controled by software instead of phy hardware"
+	help
+		Select for t21
+
+config JZ_MAC_SPEED_LED_SOFTWARE_CTRL
+	depends on JZ_INTERNAL_MAC_PHY_LED_SOFTWARE_CTRL
+	bool "internal phy speed led controled by software instead of phy hardware"
+	help
+		Select for t21
+
 config JZ_MAC_MODE
 	tristate "ingenic on-chip MAC support mode"
 	depends on JZ_MAC
