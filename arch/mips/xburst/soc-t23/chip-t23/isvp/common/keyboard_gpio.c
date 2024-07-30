@@ -140,3 +140,7 @@ struct platform_device jz_button_device = {
                 .platform_data	= &board_button_data,
 	}
 };
+
+EXPORT_SYMBOL(board_buttons);
+EXPORT_SYMBOL(board_button_data);
+EXPORT_SYMBOL(jz_button_device);
