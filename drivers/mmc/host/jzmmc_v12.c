@@ -1627,8 +1627,8 @@ static int __init jzmmc_msc_init(struct jzmmc_host *host)
 		CMDAT_TTRG_LESS_16 |			\
 		CMDAT_BUS_WIDTH_1BIT;
 
-	ret = request_irq(host->irq, jzmmc_irq, IRQF_DISABLED,
-			  dev_name(host->dev), host);
+	ret = request_irq(host->irq, jzmmc_irq, IRQF_DISABLED | IRQF_SHARED,
+		          dev_name(host->dev), host);
 
 	return ret;
 }
@@ -1693,7 +1693,8 @@ static int __init jzmmc_gpio_init(struct jzmmc_host *host)
 					(unsigned long)host);
 			ret = request_irq(gpio_to_irq(host->pdata->gpio->cd.num),
 					  jzmmc_detect_interrupt,
-					  IRQF_TRIGGER_RISING
+					  IRQF_SHARED
+					  | IRQF_TRIGGER_RISING
 					  | IRQF_TRIGGER_FALLING
 					  | IRQF_DISABLED ,
 					  "mmc-insert-detect", host);

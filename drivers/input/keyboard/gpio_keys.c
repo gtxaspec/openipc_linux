@@ -444,7 +444,6 @@ static int gpio_keys_setup_key(struct platform_device *pdev,
 		if (error < 0) {
 			dev_err(dev, "Failed to request GPIO %d, error %d\n",
 				button->gpio, error);
-			continue;
 		}
 
 		if (button->debounce_interval) {
