@@ -59,7 +59,11 @@ enum {
 	JZ_ADC_IRQ_AUX7,
 };
 
+#ifdef CONFIG_SOC_T23
+#define JZ_ADC_IRQ_NUM	1
+#else
 #define JZ_ADC_IRQ_NUM	8
+#endif
 
 #if ( JZ_ADC_IRQ_NUM > SADC_NR_IRQS )
 #error "SADC module get error irq number!"
