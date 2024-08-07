@@ -188,7 +188,7 @@ config NET_IPGRE_DEMUX
 	 Required by ip_gre and pptp modules.
 
 config NET_IP_TUNNEL
-	tristate
+	tristate "net_ip_tunnel"
 	default n
 
 config NET_IPGRE
@@ -371,7 +371,7 @@ config INET_XFRM_TUNNEL
 	default n
 
 config INET_TUNNEL
-	tristate
+	tristate "inet_tunnel"
 	default n
 
 config INET_XFRM_MODE_TRANSPORT
