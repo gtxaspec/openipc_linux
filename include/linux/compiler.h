@@ -357,4 +357,21 @@ void ftrace_likely_update(struct ftrace_branch_data *f, int val, int expect);
 #else
 # define __kprobes
 #endif
+
+/*
+ * Add the pseudo keyword 'fallthrough' so case statement blocks
+ * must end with any of these keywords:
+ *   break;
+ *   fallthrough;
+ *   goto <label>;
+ *   return [expression];
+ *
+ *  gcc: https://gcc.gnu.org/onlinedocs/gcc/Statement-Attributes.html#Statement-Attributes
+ */
+#if defined(__GNUC__) && (__GNUC__ >= 7)
+# define fallthrough __attribute__((fallthrough))
+#else
+# define fallthrough do {} while (0)  /* fallthrough */
+#endif
+
 #endif /* __LINUX_COMPILER_H */
