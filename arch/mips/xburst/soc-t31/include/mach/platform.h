@@ -22,10 +22,12 @@
 
 #define MSC0_PORTB_4BIT							\
 	{ .name = "msc0-pb-4bit",	.port = GPIO_PORT_B, .func = GPIO_OUTPUT0, .pins = (0x3f<<0), }
-//#define MSC1_PORTB							\
-//	{ .name = "msc1-pB",		.port = GPIO_PORT_B, .func = GPIO_FUNC_1, .pins = (0x6f<<8), }
+/*
+#define MSC1_PORTB							\
+	{ .name = "msc1-pB",		.port = GPIO_PORT_B, .func = GPIO_FUNC_1, .pins = (0x6f<<8), }
 #define MSC1_PORTC							\
 	{ .name = "msc1-pC",		.port = GPIO_PORT_C, .func = GPIO_FUNC_0, .pins = (0x3f<<2), }
+*/
 #define I2S_PORTC                           \
 	{.name = "i2s",              .port = GPIO_PORT_C, .func = GPIO_FUNC_0, .pins = (0x7f << 18),}
 
