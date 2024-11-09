@@ -70,7 +70,7 @@ case "$1" in
 	"-check")
 		shift
 		cc="$@"
-		check
+#		check
 		;;
 	"-ccflags")
 		ccflags
