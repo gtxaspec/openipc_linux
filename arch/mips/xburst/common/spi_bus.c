@@ -1058,6 +1058,27 @@ struct spi_nor_platform_data spi_nor_pdata[] = {
 #endif
 	},
 	{
+		.name = "W25Q128-QPI",
+		.pagesize = 256,
+		.sectorsize = 4 * 1024,
+		.chipsize = 16384 * 1024,
+		.erasesize = 32 * 1024,
+		.id = 0xef6018,
+
+		.block_info = flash_block_info,
+		.num_block_info = ARRAY_SIZE(flash_block_info),
+
+		.addrsize = 3,
+		.pp_maxbusy = 3,            /* 3ms */
+		.se_maxbusy = 400,          /* 400ms */
+		.ce_maxbusy = 8 * 10000,    /* 80s */
+
+		.st_regnum = 3,
+#ifdef CONFIG_SPI_QUAD
+		.quad_mode = &flash_quad_mode[0],
+#endif
+	},
+	{
 		.name = "FM25Q64A",
 		.pagesize = 256,
 		.sectorsize = 4 * 1024,
