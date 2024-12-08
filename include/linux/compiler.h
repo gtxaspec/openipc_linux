@@ -535,4 +535,21 @@ static __always_inline void __write_once_size(volatile void *p, void *res, int s
 # define __kprobes
 # define nokprobe_inline	inline
 #endif
+
+/*
+ * Add the pseudo keyword 'fallthrough' so case statement blocks
+ * must end with any of these keywords:
+ *   break;
+ *   fallthrough;
+ *   goto <label>;
+ *   return [expression];
+ *
+ *  gcc: https://gcc.gnu.org/onlinedocs/gcc/Statement-Attributes.html#Statement-Attributes
+ */
+#if defined(__GNUC__) && (__GNUC__ >= 7)
+# define fallthrough __attribute__((fallthrough))
+#else
+# define fallthrough do {} while (0)  /* fallthrough */
+#endif
+
 #endif /* __LINUX_COMPILER_H */
