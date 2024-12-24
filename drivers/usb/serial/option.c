@@ -430,6 +430,9 @@ static void option_instat_callback(struct urb *urb);
 #define SAMSUNG_PRODUCT_GT_B3730                0x6889
 
 /* YUGA products  www.yuga-info.com gavin.kx@qq.com */
+#define ASR_VENDOR_ID				0x1286
+#define YUGA_PRODUCT_CLM920HE9			0x4E3C
+
 #define YUGA_VENDOR_ID				0x257A
 #define YUGA_PRODUCT_CEM600			0x1601
 #define YUGA_PRODUCT_CEM610			0x1602
@@ -674,6 +677,9 @@ static const struct option_blacklist_info telit_le922_blacklist_usbcfg3 = {
 
 static const struct option_blacklist_info cinterion_rmnet2_blacklist = {
 	.reserved = BIT(4) | BIT(5),
+
+static const struct option_blacklist_info YUGA_CLM920HE9_blacklist = {
+	.reserved = BIT(0) | BIT(1),
 };
 
 static const struct usb_device_id option_ids[] = {
@@ -1987,6 +1993,8 @@ static const struct usb_device_id option_ids[] = {
 	{ USB_DEVICE(YUGA_VENDOR_ID, YUGA_PRODUCT_CWU581) },
 	{ USB_DEVICE(YUGA_VENDOR_ID, YUGA_PRODUCT_CWU582) },
 	{ USB_DEVICE(YUGA_VENDOR_ID, YUGA_PRODUCT_CWU583) },
+	{ USB_DEVICE(ASR_VENDOR_ID, YUGA_PRODUCT_CLM920HE9),
+	  .driver_info = (kernel_ulong_t)&YUGA_CLM920HE9_blacklist },
 	{ USB_DEVICE_AND_INTERFACE_INFO(VIETTEL_VENDOR_ID, VIETTEL_PRODUCT_VT1000, 0xff, 0xff, 0xff) },
 	{ USB_DEVICE_AND_INTERFACE_INFO(ZD_VENDOR_ID, ZD_PRODUCT_7000, 0xff, 0xff, 0xff) },
 	{ USB_DEVICE(LG_VENDOR_ID, LG_PRODUCT_L02C) }, /* docomo L-02C modem */
