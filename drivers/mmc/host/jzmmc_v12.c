@@ -1711,9 +1711,11 @@ static int __init jzmmc_gpio_init(struct jzmmc_host *host)
 			}
 
 		} else {
-			dev_err(host->dev, "card-detect gpio pin not specified, card-detect disabled.  Error: "
+			dev_err(host->dev, "card-detect gpio pin not specified, card-detect disabled, enabling card_present as default.  Error: "
 				"host->pdata->removal = 1, errno=%d\n",
 				host->pdata->gpio->cd.num);
+				jzmmc_clk_autoctrl(host, 1);
+				set_bit(JZMMC_CARD_PRESENT, &host->flags);
 		}
 
 		break;
