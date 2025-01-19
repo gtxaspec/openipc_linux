@@ -1102,9 +1102,8 @@ static void cdc_ncm_status(struct usbnet *dev, struct urb *urb)
 		 */
 		ctx->connected = le16_to_cpu(event->wValue);
 
-		printk(KERN_INFO KBUILD_MODNAME ": %s: network connection:"
-			" %sconnected\n",
-			ctx->netdev->name, ctx->connected ? "" : "dis");
+		dev_dbg(&ctx->netdev->dev, "network connection: %sconnected\n",
+		ctx->connected ? "" : "dis");
 
 		usbnet_link_change(dev, ctx->connected, 0);
 		if (!ctx->connected)
