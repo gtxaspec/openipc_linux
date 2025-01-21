@@ -16,7 +16,7 @@ config JZ_MAC_V12
 	  Select for jz4775
 
 config JZ_MAC_V13
-        depends on JZ_MAC
+	depends on JZ_MAC
 	bool "V13"
 	help
 	  Select for X1000
@@ -48,7 +48,7 @@ config JZ_MAC_MODE
 	select PHYLIB
 	select PHY_RESET
 	help
-	  This is the driver for JZ on-chip mac support mode device.
+		This is the driver for JZ on-chip mac support mode device.
 
 choice
 	prompt "JZSOC MAC mode"
@@ -58,22 +58,22 @@ choice
 config JZ_MAC_MII
 	bool "MII"
 	help
-	  Select Media Independent Interface
+		Select Media Independent Interface
 
 config JZ_MAC_GMII
 	bool "GMII"
 	help
-	  Select Gigabit Media Independent Interface
+		Select Gigabit Media Independent Interface
 
 config JZ_MAC_RMII
 	bool "RMII"
 	help
-	  Select Reduced Media Independent Interface
+		Select Reduced Media Independent Interface
 
 config JZ_MAC_RGMII
 	bool "RGMII"
 	help
-	  Select Reduced Gigabit Media Independent Interface
+		Select Reduced Gigabit Media Independent Interface
 endchoice
 
 config JZGPIO_PHY_RESET
@@ -83,3 +83,26 @@ config JZGPIO_PHY_RESET
 	  This is the gpio for phy reset for 4775 net
 	  if there is no special porpose
 	  do open this item
+
+choice
+	prompt "MAC Clock Rate"
+	depends on JZ_MAC && JZ_MAC_V13
+	default JZ_MAC_CLK_25MHZ if JZ_INTERNAL_MAC_PHY
+	default JZ_MAC_CLK_50MHZ
+
+config JZ_MAC_CLK_25MHZ
+	bool "25 MHz"
+	help
+	Select 25 MHz clock for internal PHY
+
+config JZ_MAC_CLK_50MHZ
+	bool "50 MHz"
+	help
+	Select 50 MHz clock for external PHY
+
+endchoice
+
+config JZ_MAC_CLK_VALUE
+	int
+	default 25000000 if JZ_MAC_CLK_25MHZ
+	default 50000000

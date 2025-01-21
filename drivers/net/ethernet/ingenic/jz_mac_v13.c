@@ -2407,7 +2407,7 @@ static int  jz_mii_bus_probe(struct platform_device *pdev)
 #ifdef CONFIG_JZ_INTERNAL_MAC_PHY
 	clk_set_rate(clk_cgu, 25000000);
 #else
-	clk_set_rate(clk_cgu, 50000000);
+	clk_set_rate(clk_cgu, CONFIG_JZ_MAC_CLK_VALUE ? CONFIG_JZ_MAC_CLK_VALUE : 50000000);
 #endif
 
 	/* //	synopGMAC_multicast_enable(gmacdev); */
