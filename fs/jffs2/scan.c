@@ -658,12 +658,12 @@ scan_more:
 			ofs += 4;
 			scan_end = min_t(uint32_t, EMPTY_SCAN_SIZE(c->sector_size)/8, buf_len);
 
-			jffs2_dbg(1, "Found empty flash at 0x%08x\n", ofs);
+			jffs2_dbg(0, "Found empty flash at 0x%08x\n", ofs);
 		more_empty:
 			inbuf_ofs = ofs - buf_ofs;
 			while (inbuf_ofs < scan_end) {
 				if (unlikely(*(uint32_t *)(&buf[inbuf_ofs]) != 0xffffffff)) {
-					pr_warn("Empty flash at 0x%08x ends at 0x%08x\n",
+					jffs2_dbg(0, "Empty flash at 0x%08x ends at 0x%08x\n",
 						empty_start, ofs);
 					if ((err = jffs2_scan_dirty_space(c, jeb, ofs-empty_start)))
 						return err;
@@ -735,10 +735,10 @@ scan_more:
 		}
 		if (je16_to_cpu(node->magic) != JFFS2_MAGIC_BITMASK) {
 			/* OK. We're out of possibilities. Whinge and move on */
-			noisy_printk(&noise, "%s(): Magic bitmask 0x%04x not found at 0x%08x: 0x%04x instead\n",
-				     __func__,
-				     JFFS2_MAGIC_BITMASK, ofs,
-				     je16_to_cpu(node->magic));
+			jffs2_dbg(2, "%s(): Magic bitmask 0x%04x not found at 0x%08x: 0x%04x instead\n",
+				__func__,
+				JFFS2_MAGIC_BITMASK, ofs,
+				je16_to_cpu(node->magic));
 			if ((err = jffs2_scan_dirty_space(c, jeb, 4)))
 				return err;
 			ofs += 4;
