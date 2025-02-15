@@ -2137,22 +2137,21 @@ static int ingenic_mac_probe(struct platform_device *pdev)
 
 	rc = of_property_read_u32(pdev->dev.of_node, "ingenic,phy-clk-freq", &phy_clk_freq);
 	if (rc < 0) {
-		phy_clk_freq = 50000000;
-	}
+		// DT read failed — apply the original logic
+		chip_version = *((volatile unsigned int *)(0xb3540250));
+		freq_diff = *((volatile unsigned int *)(0xb354022c));
+		chip_version = (chip_version >> 16) & 0xffff;
+		freq_diff = (freq_diff >> 15) & 0x1;
 
-	chip_version = *((volatile unsigned int *)(0xb3540250));
-	freq_diff = *((volatile unsigned int *)(0xb354022c));
-	chip_version = (chip_version >> 16) & 0xffff;
-	freq_diff = (freq_diff >> 15) & 0x1;
-	if((chip_version == 0x0000) || (chip_version == 0x1111) || (chip_version == 0x3333)) {
-		if(freq_diff)
-		{
+		if ((chip_version == 0x0000) || (chip_version == 0x1111) || (chip_version == 0x3333)) {
+			if (freq_diff) {
+				phy_clk_freq = 25000000;
+			} else {
+				phy_clk_freq = 50000000;
+			}
+		} else {
 			phy_clk_freq = 25000000;
-		}else{
-			phy_clk_freq = 50000000;
 		}
-	} else {
-		phy_clk_freq = 25000000;
 	}
 
 	if (clk_set_rate(lp->clk_cgu, phy_clk_freq) || (clk_prepare_enable(lp->clk_cgu))) {
