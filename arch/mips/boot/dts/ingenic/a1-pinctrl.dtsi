@@ -1,0 +1,213 @@
+#include <dt-bindings/pinctrl/ingenic-pinctrl.h>
+
+&pinctrl {
+	uart0_pin: uart0-pin {
+		uart0_pb: uart0-pb {
+			ingenic,pinmux = <&gpb 22 23>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+		uart0_pc: uart0-pc {
+			ingenic,pinmux = <&gpc 2 3>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+		uart0_pc1: uart0-pc1 {
+			ingenic,pinmux = <&gpc 18 19>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+	};
+	uart1_pin: uart1-pin {
+		uart1_pc: uart1-pc {
+			ingenic,pinmux = <&gpc 6 7>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+	};
+
+	uart2_pin: uart2-pin {
+		uart2_pc: uart2-pc {
+			ingenic,pinmux = <&gpc 14 15>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+		uart2_pb: uart2-pb {
+			ingenic,pinmux = <&gpb 16 17>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION2>;
+		};
+		uart2_pa: uart2-pa {
+			ingenic,pinmux = <&gpa 4 5>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+	};
+
+	i2c0_pin: i2c0-pin {
+		i2c0_pa: i2c0-pa {
+			ingenic,pinmux = <&gpa 4 5>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION2>;
+		};
+		i2c0_pb: i2c0-pb {
+			ingenic,pinmux = <&gpb 4 5>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION2>;
+		};
+		i2c0_pb1: i2c0-pb1 {
+			ingenic,pinmux = <&gpb 24 25>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION2>;
+		};
+	};
+
+	i2c1_pin: i2c1-pin {
+		i2c1_pa: i2c1-pa {
+			ingenic,pinmux = <&gpa 10 11>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+		i2c1_pb: i2c1-pb {
+			ingenic,pinmux = <&gpb 10 11>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION2>;
+		};
+		i2c1_pc: i2c1-pc {
+			ingenic,pinmux = <&gpc 2 3>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION2>;
+		};
+	};
+
+	hdmi_i2c_pin: hdmi_i2c-pin {
+		hdmi_i2c_pb: hdmi_i2c-pb {
+			ingenic,pinmux = <&gpb 29 30>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+		hdmi_i2c_pc: hdmi_i2c-pc {
+			ingenic,pinmux = <&gpc 4 5>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+	};
+
+	hdmi_hot_pin: hdmi_hot-pin {
+		hdmi_hot_pb: hdmi_hot-pb {
+			ingenic,pinmux = <&gpb 31 31>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+	};
+
+	hdmi_cec_pin: hdmi_cec-pin {
+		hdmi_cec_pb: hdmi_cec-pb {
+			ingenic,pinmux = <&gpb 28 28>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+	};
+
+	vga_pin: vga-pin {
+		vga_pc: vga-pc {
+			ingenic,pinmux = <&gpc 2 5>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+	};
+
+	lcd_pin: lcd-pin {
+		lcd_pe: lcd-pe {
+			ingenic,pinmux = <&gpe 0 27>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+	};
+
+	msc0_pin: msc0-pin {
+		msc0_pb: msc0-pb {
+			ingenic,pinmux = <&gpb 0 5>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+		msc0_pc: msc0-pc {
+			ingenic,pinmux = <&gpc 24 29>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION2>;
+		};
+	};
+
+	msc1_pin: msc1-pin {
+		msc1_pb: msc1-pb {
+			ingenic,pinmux = <&gpb 12 17>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+	};
+
+	gmac0_rmii_p0: gmac0-rmii-p0 {
+		gmac0_rmii_p0_normal: gmac0-rmii-normal {
+			ingenic,pinmux = <&gpa 1 6>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+		gmac0_rmii_p0_rst: gmac0-rmii-p0-rst {
+			ingenic,pinmux = <&gpa 1 6>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCHILVL>;
+		};
+	};
+
+	gmac0_rmii_p1: gmac0-rmii-p1 {
+		gmac0_rmii_p1_normal: gmac0-rmii-p1-normal {
+			ingenic,pinmux = <&gpa 0 0>, <&gpa 7 14>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+
+		gmac0_rmii_p1_nomdio: gmac0-rmii-p1-nomdio {
+			ingenic,pinmux = <&gpa 0 0>, <&gpa 7 12>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+	};
+
+	gmac1_rmii_p0: gmac1-rmii-p0 {
+		gmac1_rmii_p0_normal: gmac1-rmii-normal {
+			ingenic,pinmux = <&gpa 16 21>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+		gmac1_rmii_p0_rst: gmac1-rmii-p0-rst {
+			ingenic,pinmux = <&gpa 16 21>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCHILVL>;
+		};
+	};
+
+	gmac1_rmii_p1: gmac1-rmii-p1 {
+		gmac1_rmii_p1_normal: gmac1-rmii-p1-normal {
+			ingenic,pinmux = <&gpa 15 15>, <&gpa 22 29>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+
+		gmac1_rmii_p1_nomdio: gmac1-rmii-p1-nomdio {
+			ingenic,pinmux = <&gpa 15 15>, <&gpa 22 27>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+	};
+
+//setted the gpio function of pwm by pwm's driver.
+
+	sfc0_pin: sfc0-pin {
+		sfc0_pc: sfc0-pc {
+			ingenic,pinmux = <&gpc 20 25>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		};
+	};
+
+	sfc1_pin: sfc1-pin {
+		sfc1_pb: sfc1-pb {
+			ingenic,pinmux = <&gpb 6 11>;
+			ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		};
+	};
+
+	spi0_pin: spi0_pin {
+		spi0_pb: spi0-pb {
+			 ingenic,pinmux = <&gpb 0 5>;
+			 ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+		 };
+		spi0_pb1: spi0-pb1 {
+			 ingenic,pinmux = <&gpb 6 11>;
+			 ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+		 };
+	};
+
+    spi1_pin: spi1_pin {
+	    spi1_pb: spi1-pb {
+		    ingenic,pinmux = <&gpb 12 17>;
+		    ingenic,pinmux-funcsel = <PINCTL_FUNCTION1>;
+	    };
+	    spi1_pc: spi1-pc {
+		    ingenic,pinmux = <&gpc 8 13>;
+		    ingenic,pinmux-funcsel = <PINCTL_FUNCTION0>;
+	    };
+    };
+
+
+};
+

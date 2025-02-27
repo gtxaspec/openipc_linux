@@ -1,0 +1,12 @@
+config DT_A1_TUCANA
+	bool "a1 tucana"
+config DT_A1_GORILLA
+	bool "a1 gorilla"
+config DT_A1_CALF
+	bool "a1 calf"
+config DT_A1_CALF_V12
+	bool "a1 calf_v12"
+config DT_A1_CALF_V13
+	bool "a1 calf_v13"
+config DT_A1_CALF_V16
+	bool "a1_calf_v16"
